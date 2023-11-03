@@ -1,0 +1,273 @@
+MAVEN:
+
+
+Step-add git link of HEllo World Repos
+
+clean compile package
+
+
+Ant:
+
+Step- add git link of ant reops
+clean complie package (under build step)
+
+
+To build an image for a web application using Dockerfile :
+
+FROM ubuntu:latest
+MAINTAINER "Gaurav Prajapti"
+RUN apt-get update -y 
+RUN apt-get install nginx -y
+EXPOSE 80
+COPY index.html /usr/share/nginx/html/index.html
+COPY index.html /var/www/html/index.html
+CMD ["nginx","-g","daemon off;"]
+
+Q12- web application 
+Create a Dockerfile
+Create HTML fIle
+Docker built -t demo .
+Docker image
+Docker inspect demo
+Docker history demo
+Docker run -it -p 8888:80 demo
+Docker ps
+http://IP_Address:8888/
+docker stop <image_id>/<image_name>   ex., docker stop demo
+docker start <image_id>/<image_name
+
+
+
+
+DOCKER COMMANDS:
+
+docker version
+docker login
+docker  pull ubuntu
+docker pull images --help
+docker images help
+docker images -a
+docker images -q
+docker images -f "dangling=false"
+docker images -f "dangling=true"
+docker run ubuntu
+docker ps -a
+docker run --name geeta234 -it ubuntu bash; mkdir abc; ls
+docker unpause ( mention container ID)
+docker pause (container Id)
+docker top (container Id)
+docker stats (container Id)
+docker rm (container Id)
+docker inspect ubuntu
+docker rmi ubuntu:mantic-20230912
+docker coomit (mention ID)- use docker ps -a first
+docker push geeta234/new:1
+docker history (Id)
+
+
+
+
+
+Exp 10 Corn Command:
+
+H/2 * * * * (build period) 
+
+
+LINUX COMMANDS :
+
+sudo-h
+sudo apt-get
+ls
+cd desktop
+pwd
+cp abc.txt def.txt
+mv abc.txt feg.txt
+em feg.txt
+mkdir BRJ
+history
+df
+du
+free
+uname -a
+top
+man history
+info
+passwd
+whatis man
+date
+w
+exit
+head abc.txt
+tail abc.txt
+echo "hello"
+grep "WD" abc.txt
+
+
+GIT COMMANDS :
+
+git --version
+git init
+git status
+git config --global user.name 'geeta'
+git config --global user.email "deshpandesammit6@student.sfit.ac.in"
+git config --global --list
+git add 1.txt
+git commit -m 'First commit'
+git log
+git log --oneline
+git log --oneline 1.txt
+git log --oneline f38b484
+
+
+PUSH AND PULL OPERATIONS GIT AND GITHUB :
+
+git remote add origin https://"url of repos"
+git remote show origin
+git push origin master
+git add 2.txt
+git commit -m "2.txt"
+git push origin master
+git fetch origin master
+git merge origin/master
+git pull origin master
+git clone https://"url"
+
+
+GIT CHEAT SHEET COMMANDS :
+
+git branch demo1
+git branch
+git checkout demo1
+gir rm 1.txt
+git remote -v
+
+
+PIPELINE SCRIPT :
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Year', description: 'Enter a year to check if it is a leap year or not:')
+    }
+    stages {
+        stage('Check Leap Year') {
+            steps {
+                script {
+                    def yearInput = params.Year
+
+                    // Check if the input is not empty
+                    if (yearInput) {
+                        def year = yearInput.toInteger()
+
+                        def isLeapYear = false
+
+                        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                            isLeapYear = true
+                        }
+
+                        echo "Year ${year} is a leap year: ${isLeapYear}"
+                    } else {
+                        error "Year input is empty. Please provide a valid year."
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+pipeline {
+    agent any
+    stages {
+        stage('User Input') {
+            steps {
+                script {
+                    // Prompt the user for input
+                    def userInput = input(
+                        id: 'userInput', 
+                        message: 'Please provide your information:',
+                        parameters: [
+                            string(name: 'First Name', description: 'Your First Name:'),
+                            string(name: 'Last Name', description: 'Your Last Name:'),
+                            string(name: 'Age', description: 'Your Age:')
+                        ]
+                    )
+
+                    // Store the user input in variables
+                    def firstName = userInput['First Name']
+                    def lastName = userInput['Last Name']
+                    def age = userInput['Age']
+
+                    echo "Thank you for providing your information:"
+                    echo "First Name: ${firstName}"
+                    echo "Last Name: ${lastName}"
+                    echo "Age: ${age}"
+                }
+            }
+        }
+    }
+}
+
+
+PYTHON SCRIPT :
+
+num = 4
+  
+if num < 0:  
+   print("Enter a positive number")  
+else:  
+   sum = 0  
+   # use while loop to iterate un till zero  
+   while(num > 0):  
+       sum += num  
+       num -= 1  
+   print("The sum is",sum)  
+
+
+
+PIPELINE SCRIPT :
+
+pipeline{
+    agent any
+    stages{
+        stage ('Plan phase'){
+            steps{
+                echo 'Hello this is Aditi Shirke from TEITB'
+            }
+        }
+        stage ('code phase'){
+            steps{
+                input('Do you want to continue?')
+            }
+        }
+        stage ('integrate phase'){
+            when{
+                not{
+                    branch "master"
+                }
+            }
+            steps {
+                echo 'Integration test passed'
+            }
+        }
+        stage ('testing phase'){
+            parallel{
+                stage ('unit test'){
+                    steps{
+                        echo 'running unit test'
+                    }
+                }
+            }
+        }}}
+
+
+
+
+
+
+
+
+
+
+
